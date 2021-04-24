@@ -63,7 +63,7 @@ RISK_LIMITS = {
 }
 
 positions: Dict[str, int] = defaultdict(int)
-books: Dict[str, Book] = keydefaultdict(lambda sym: Book(sym, [], [], []))
+books: Dict[str, Book] = keydefaultdict(lambda sym: Book(sym, [], [], [], {}))
 cur_orders: Set[int] = set()
 basket = {"BOND": 3, "GS": 2, "MS": 3, "WFC": 2}
 counter: int = 1

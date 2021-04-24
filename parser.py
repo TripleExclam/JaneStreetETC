@@ -5,12 +5,12 @@ from typing import List, Tuple, Dict
 @dataclass
 class Book:
     symbol: str
-    buy: List[List[int, int]] # [[price, volume]]
-    sell: List[List[int, int]] # [[price, volume]]
+    buy: List[List[int]] # [[price, volume]]
+    sell: List[List[int]] # [[price, volume]]
     last_trades: List[Tuple[int, int]] # [(price, volume)]
-    our_resting_orders: Dict[int, List[str, int, int]] # order_id -> [direction, price, volume]
+    our_resting_orders: Dict[int, List] # order_id -> [direction, price, volume]
 
-    def update_book(self, buy: List[List[int, int]], sell: List[List[int, int]]):
+    def update_book(self, buy: List[List[int]], sell: List[List[int]]):
         self.buy = buy
         self.sell = sell
 
