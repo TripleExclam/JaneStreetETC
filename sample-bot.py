@@ -57,6 +57,9 @@ def main():
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
     while True:
         message = read_from_exchange(exchange)
+
+
+
         if message["type"] == "close":
             print("The round has ended")
             break
