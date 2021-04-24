@@ -3,6 +3,8 @@ from dataclasses_json import dataclass_json
 
 @dataclass_json
 @dataclass
-class SimpleExample:
-
+class Book:
+    symbol: str
+    buy: list
+    sell: list 
 
