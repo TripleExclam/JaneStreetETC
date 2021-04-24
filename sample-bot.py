@@ -9,6 +9,7 @@ from __future__ import print_function
 import sys
 import socket
 import json
+from parser import *
 
 # ~~~~~============== CONFIGURATION  ==============~~~~~
 # replace REPLACEME with your team name!
@@ -45,7 +46,6 @@ def read_from_exchange(exchange):
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
-
 def main():
     exchange = connect()
     write_to_exchange(exchange, {"type": "hello", "team": team_name.upper()})
@@ -55,10 +55,12 @@ def main():
     # Since many write messages generate marketdata, this will cause an
     # exponential explosion in pending messages. Please, don't do that!
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
+
+    books = []
     while True:
         message = read_from_exchange(exchange)
-
-
+        if message["type"] == "book":
+            books.append(Book.from_json('{"overriddenGivenName": "Alice"}'))
 
         if message["type"] == "close":
             print("The round has ended")
