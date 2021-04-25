@@ -16,7 +16,7 @@ from parser import *
 team_name = "BUYHIGHSELLLOW"
 # This variable dictates whether or not the bot is connecting to the prod
 # or test exchange. Be careful with this switch!
-test_mode = False
+test_mode = True
 
 # This setting changes which test exchange is connected to.
 # 0 is prod-like
@@ -87,7 +87,7 @@ def main():
             check_bonds = -1
             print("BOUGHT")
 
-        if sell != -1:
+        elif sell != -1:
             sell_order = {"type": "add", "order_id": counter * 3, "symbol": "BOND", "dir": "SELL", "price": sell[0], "size": sell[1]}
             write_to_exchange(exchange, sell_order) 
             sell = -1
@@ -95,6 +95,7 @@ def main():
 
         if message["type"] == "close":
             print("The round has ended")
+            return
 
 if __name__ == "__main__":
     main()
