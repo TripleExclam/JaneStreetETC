@@ -26,3 +26,5 @@ class Book:
     def update_resting_order(self, order_id, size):
         self.our_resting_orders[order_id][2] -= size
 
+    def update_resting_order(self, order_id, size):
+        self.our_resting_orders[order_id][2] -= size

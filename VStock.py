@@ -20,7 +20,7 @@ class VPrice:
     
     def getMargin(self, signal):
         return self.price * (1 - self.MARGIN) if signal == "BUY" else self.price * (1 + self.MARGIN)
-    
+
     def buySignal(self, order):
         if len(order) == 0 or self.price == -1:
             return -1
@@ -38,4 +38,3 @@ class VPrice:
         if order[0] > fair * (1 + self.MARGIN):
             return order
         return -1
-
